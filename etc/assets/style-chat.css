@@ -35111,3 +35111,17 @@ i._47e3._48cb{
 .bootloader_SNwNu{
 	display:block!important;
 }
+._38lh {
+    color: #0084ff;
+    /* font-size: .9em; */
+    font-weight: bold;
+    line-height: 32px;
+    max-width: 80px;
+    min-width: 33px;
+    overflow: hidden;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: auto;
+    text-decoration: none;
+}
