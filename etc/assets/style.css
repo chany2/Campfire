@@ -135,3 +135,6 @@ body, html{
 .hidden, #theFrame{
 	visibility: hidden;
 }
+.none{
+	display: none;
+}
