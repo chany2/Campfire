@@ -174,9 +174,14 @@
           $('#theFrame').remove();
         } else {
           // REDIRECT
-          window.location.replace(url);
-          consoleDiv.innerHTML = '✘ Content window failed to load: ' + iframe.src;
-          consoleDiv.style.cssText = 'color: red;'
+          if(url.indexOf("ampproject") !== -1 ){
+
+          }else{
+            window.location.replace(url);
+            consoleDiv.innerHTML = '✘ Content window failed to load: ' + iframe.src;
+            consoleDiv.style.cssText = 'color: red;'
+          }
+          
         }
       } 
 
