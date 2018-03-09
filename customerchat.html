@@ -42,7 +42,7 @@
                               <div class="_hox _4ik4 _4ik5" style="-webkit-line-clamp: 1;">Typically replies instantly</div>
                            </div>
                            <div class="_1qd3">
-                              <div class="_4bqf _17l7" tabindex="0" role="button">
+                              <a onclick="newtab()"><div class="_4bqf _17l7" tabindex="0" role="button">
                                  <svg width="24px" height="24px" viewBox="0 0 24 24">
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                        <g transform="translate(-413.000000, -56.000000)">
@@ -60,7 +60,7 @@
                                        </g>
                                     </g>
                                  </svg>
-                              </div>
+                              </div></a>
                            </div>
                         </div>
                         <div class="_424s">
@@ -92,7 +92,7 @@
                                                                <div class="_2kay">
                                                                   <div class="_2kbn _4ik4 _4ik5" style="-webkit-line-clamp: 1;">So... you need more sales?</div>
                                                                   <div class="_2kbt">
-                                                                     <div>Want to jumpstart 1 on 1 chats with your leads? <br><br> Just type <b>"Yes"</b> below.</div>
+                                                                     <div><!-- Want to jumpstart 1 on 1 chats with your leads? --> <br> Just type <b>"Yes"</b> below. Click Send.<br><br> And then say <b>"hi"</b> and I will send you a free ebook on easy lead gen strategies.</div>
                                                                   </div>
                                                                </div>
                                                                <!-- <div class="_lx4">
@@ -114,7 +114,7 @@
                                                 <!-- <div class="logMessage"><span><span>You opened this conversation from Gary-Yau Chan.</span></span></div> -->
                                              </div>
                                           </div>
-                                          <div style="position: relative; top: 0px;">
+                                          <!-- <div style="position: relative; top: 0px;">
                                              <div class="_2ufb">
                                                 <div currentselectedindex="0" maxchangeamount="1" class="_23n-">
                                                    <div class="_4u-c">
@@ -164,7 +164,7 @@
                                                    </div>
                                                 </div>
                                              </div>
-                                          </div>
+                                          </div> -->
                                        </div>
                                     </div>
                                  </div>
@@ -174,7 +174,7 @@
                         <div class="_336a">
                            <div class="_4zbw">
                               <div class="_4fwe">
-                                 <label class="_58ak _3ct8"><input class="_58al" type="text" placeholder="Type a message..." value=""></label>
+                                 <label class="_58ak _3ct8"><input class="_58al" type="text" placeholder="Type a message..." value="" id="messagebox"></label>
                               </div>
                               <div class="_kmd">
                                  <div class="_4bqf _64mk" tabindex="0" role="button">
@@ -189,5 +189,17 @@
             </div>
          </div>
       </div>
+      <script type="text/javascript">
+      document.getElementById("messagebox").addEventListener("keydown", function(e) {
+          // Enter is pressed
+          if (e.keyCode == 13) { 
+            newtab();
+           }
+      }, false);
+
+      function newtab(){
+         window.open('https://www.facebook.com/messages/t/garyyau.chan','mywindow').focus()
+      }
+      </script>
    </body>
 </html>
