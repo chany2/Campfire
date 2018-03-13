@@ -1,13 +1,67 @@
+<?php
+      
+      $siteUrl = $_GET['url'];
+      $requestUrl = 'https://opengraph.io/api/1.1/site/' . urlencode($siteUrl);
+      
+      $requestUrl = $requestUrl . '?app_id=5a92f46487efbd253e7972d3';
+       
+      $siteInformationJSON = file_get_contents($requestUrl);
+      $siteInformation = json_decode($siteInformationJSON, true);
+
+      $title = $siteInformation['hybridGraph']['title'];
+      $description = $siteInformation['hybridGraph']['description'];
+      $image = $siteInformation['hybridGraph']['image'];    
+      $site_name = $siteInformation['hybridGraph']['site_name'];
+      $video = $siteInformation['hybridGraph']['video'];  
+      $locale = $siteInformation['hybridGraph']['locale'];                     
+?>
+
 <html>
    <head>
-      <title>Campfire Chat</title>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">    
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="description" content="Create Real Sales Opportunities on Any Link You Share.">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
       <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-      <link rel="stylesheet" href="etc/assets/style.css">
-      <link rel="stylesheet" href="etc/assets/facebook.css">
-      <link rel="stylesheet" type="text/css" href="etc/assets/chat.css">
+      <link rel="stylesheet" href="../etc/assets/style.css">
+      <link rel="stylesheet" href="../etc/assets/facebook.css">
+      <link rel="stylesheet" type="text/css" href="../etc/assets/chat.css">
+
+      <meta property="og:title" content="<?php echo $title; ?>">
+      <meta property="og:url" content="<?php echo $url; ?>">
+      <meta property="og:description" content="<?php echo $description; ?>">
+      <meta property="og:image" content="<?php echo $image; ?>">
+      <meta property="og:url" content="<?php echo $url; ?>">
+
+      <!-- COMMON TAGS -->
+      <title><?php echo $title; ?></title>
+      <!-- Search Engine -->
+      <meta name="description" content="<?php echo $description; ?>">
+      <meta name="image" content="<?php echo $image; ?>">
+      <!-- Schema.org for Google -->
+      <meta itemprop="name" content="<?php echo $title; ?>">
+      <meta itemprop="description" content="<?php echo $description; ?>">
+      <meta itemprop="image" content="<?php echo $image; ?>">
+      <!-- Twitter -->
+      <meta name="twitter:card" content="summary">
+      <meta name="twitter:title" content="<?php echo $title; ?>">
+      <meta name="twitter:description" content="<?php echo $description; ?>">
+      <!-- <meta name="twitter:site" content=""> -->
+      <!-- <meta name="twitter:creator" content=""> -->
+      <meta name="twitter:image:src" content="<?php echo $image; ?>">
+      <!-- <meta name="twitter:player" content=""> -->
+      <!-- Open Graph general (Facebook, Pinterest & Google+) -->
+      <meta name="og:title" content="<?php echo $title; ?>">
+      <meta name="og:description" content="<?php echo $description; ?>">
+      <meta name="og:image" content="<?php echo $image; ?>">
+      <meta name="og:url" content="<?php echo $url; ?>">
+      <meta name="og:site_name" content="<?php echo $site_name; ?>">
+      <meta name="og:video" content="<?php echo $video; ?>">
+      <meta name="og:locale" content="<?php echo $locale; ?>">
+      <!-- <meta name="fb:admins" content="">
+      <meta name="fb:app_id" content=""> -->
+      <meta name="og:type" content="website">
+      
       <style>
          /*body{
          overflow-y: scroll;
@@ -50,7 +104,7 @@
                            <div class="_j68">
                               <div class="promptHeaderContainer">
                                  <div class="promptTextContainer">
-                                    <div class="promptHeader">Hi! Want to get more leads faster without spending more?</div>
+                                    <div class="promptHeader">Hey its Gary here! Want to get more leads faster without spending more?</div>
                                     <div class="promptSubheader">
                                        <div class="profilePictureContainer">
                                           <div class="_4cqr">
