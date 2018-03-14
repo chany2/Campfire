@@ -173,6 +173,14 @@
               $('.closeButtonContainer').click(function(){
                 t.welcome.fadeOut(t.delay);
               });
+
+              $('.fb-button').click(function(){
+                if($('.fb-livechat-welcome').css('display') == 'none'){
+                  // t.welcome.fadeIn(t.delay);
+                }else{
+                  t.welcome.fadeOut(t.delay);
+                }
+              });
       
               $('.promptButton').click(function(){
                 t.welcome.fadeOut(t.delay, function(){

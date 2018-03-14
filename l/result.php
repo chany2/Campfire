@@ -109,16 +109,16 @@
                            <div class="_j68">
                               <div class="promptHeaderContainer">
                                  <div class="promptTextContainer">
-                                    <div class="promptHeader"><img src="https://thumbs.gfycat.com/ResponsibleBeautifulHoki-max-1mb.gif" style="margin:10px">Hey its Gary here! Want to get more leads faster without spending more?<br><br>Click Chat Now, I'll send you my recorded webinar.
+                                    <div class="promptHeader"><img src="https://thumbs.gfycat.com/ResponsibleBeautifulHoki-max-1mb.gif" style="margin:10px">Hey its Jason here! Want to get more leads faster without spending more?<br><br>Click Chat Now, I'll send you my recorded webinar.
                                     </div>
                                     <div class="promptSubheader">
                                        <div class="profilePictureContainer">
                                           <div class="_4cqr">
-                                             <img class="profilePicture img" src="https://scontent-lax3-1.xx.fbcdn.net/v/t1.0-1/c140.32.476.476/s24x24/10941381_10100214600061726_604791725828780294_n.jpg?oh=f3e198e2730fe2a6ee56ee6111060f74&oe=5ABE66D1" alt="">
+                                             <img class="profilePicture img" src="https://media.licdn.com/dms/image/C4D03AQGeTyDssyLsaw/profile-displayphoto-shrink_800_800/0?e=1526169600&v=alpha&t=XA04VIgAk-jDYJzqhHB71BVaBOnPvibw9N4n75uG3hI" alt="">
                                              <div class="clearfix"></div>
                                           </div>
                                        </div>
-                                       <div class="username">Gary-Yau Chan</div>
+                                       <div class="username">Jason Bay</div>
                                        <!-- <a class="notYouLink" href="#">Not you?</a> -->
                                     </div>
                                  </div>
@@ -152,7 +152,7 @@
                                     </div>
                                  </div>
                               </div>
-                              <a onclick="window.open('https://www.m.me/garyyau.chan', '_blank')"><div class="promptButtonContainer">
+                              <a onclick="window.open('https://www.linkedin.com/messaging/compose/?after=mynetwork.index&recipient=jasondbay', '_blank')"><div class="promptButtonContainer">
                                  <div class="_4bqf promptButton" tabindex="0" role="button" style="color: rgb(0, 132, 255);">Chat Now</div></a>
                               </div>
                            </div>

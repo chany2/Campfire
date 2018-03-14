@@ -96,7 +96,7 @@
                                     </div>
                                  </div>
                               </div>
-                              <a onclick="window.open('https://www.facebook.com/messages/t/garyyau.chan', '_blank')"><div class="promptButtonContainer">
+                              <a onclick="window.open('https://www.m.me/garyyau.chan', '_blank')"><div class="promptButtonContainer">
                                  <div class="_4bqf promptButton" tabindex="0" role="button" style="color: rgb(0, 132, 255);">Chat Now</div></a>
                               </div>
                            </div>
@@ -177,6 +177,8 @@
               $('.fb-button').click(function(){
                 if($('.fb-livechat-welcome').css('display') == 'none'){
                   t.welcome.fadeIn(t.delay);
+                }else{
+                  t.welcome.fadeOut(t.delay);
                 }
               });
       
