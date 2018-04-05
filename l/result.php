@@ -104,7 +104,6 @@
          overflow-y: scroll;
          }
       </style>
-      <script async>(function(s,u,m,o,j,v){j=u.createElement(m);v=u.getElementsByTagName(m)[0];j.async=1;j.src=o;j.dataset.sumoSiteId='3f01d7a57fb4246b1c668e5dcff27ab1576b2a3cfca252ddb6ac6455e0ff318e';v.parentNode.insertBefore(j,v)})(window,document,'script','//load.sumo.com/');</script>
    </head>
    <body>
       <div class="scroll-wrapper">
@@ -196,7 +195,7 @@
         $("#iframe iframe").attr({'src':url});
       
         // TESTING IF IFRAME, ELSE REDIRECT
-        if(canAccessIFrame(url)){
+        if(canAccessIFrame(decodeURIComponent(url))){
       
         }else{
           //window.location.replace(url);

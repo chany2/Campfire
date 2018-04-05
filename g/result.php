@@ -196,7 +196,7 @@
         $("#iframe iframe").attr({'src':url});
       
         // TESTING IF IFRAME, ELSE REDIRECT
-        if(canAccessIFrame(url)){
+        if(canAccessIFrame(decodeURIComponent(url))){
       
         }else{
           //window.location.replace(url);
