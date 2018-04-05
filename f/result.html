@@ -32,6 +32,9 @@
          -webkit-overflow-scrolling: touch;
          overflow-y: scroll;
          }
+         .fb-livechat-welcome{
+          bottom: 290pt;
+         }
       </style>
    </head>
    <body>
@@ -50,7 +53,8 @@
                            <div class="_j68">
                               <div class="promptHeaderContainer">
                                  <div class="promptTextContainer">
-                                    <div class="promptHeader">Hey its Gary here! Want to get more leads faster without spending more?</div>
+                                    <div class="promptHeader"><img src="https://thumbs.gfycat.com/ResponsibleBeautifulHoki-max-1mb.gif" style="margin:10px">Hey its Gary here! Want to get more leads faster without spending more?<br><br>Click Chat Now, I'll send you my recorded webinar.
+                                    </div>
                                     <div class="promptSubheader">
                                        <div class="profilePictureContainer">
                                           <div class="_4cqr">
@@ -92,8 +96,8 @@
                                     </div>
                                  </div>
                               </div>
-                              <div class="promptButtonContainer">
-                                 <div class="_4bqf promptButton" tabindex="0" role="button" style="color: rgb(0, 132, 255);">Chat Now</div>
+                              <a onclick="window.open('https://www.m.me/garyyau.chan', '_blank')"><div class="promptButtonContainer">
+                                 <div class="_4bqf promptButton" tabindex="0" role="button" style="color: rgb(0, 132, 255);">Chat Now</div></a>
                               </div>
                            </div>
                         </div>
@@ -148,7 +152,7 @@
    <script>
       $(document).ready(function() {
               var t = {
-                  delay: 125,
+                  delay: 650,
                   overlay: $(".fb-overlay"),
                   widget: $(".fb-widget"),
                   button: $(".fb-button"),
@@ -161,35 +165,31 @@
                       bottom: 0,
                       opacity: 0
                   }, 2 * t.delay, function() {
-                      $(this).hide("slow"), t.button.show()
+                      //$(this).hide("slow"), t.button.show()
                   })) : t.welcome.fadeOut(t.delay, function(){
-                    t.widget.stop().show().animate({
-                          bottom: "100px",
-                          opacity: 1
-                  }, 2 * t.delay), t.overlay.fadeIn(t.delay)
+                  //   t.widget.stop().show().animate({
+                  //         bottom: "100px",
+                  //         opacity: 1
+                  // }, 2 * t.delay), t.overlay.fadeIn(t.delay)
                   })
               })
       
-              $('.closeButtonContainer').click(function(){
-                t.welcome.fadeOut(t.delay);
-              });
-
               $('.fb-button').click(function(){
                 if($('.fb-livechat-welcome').css('display') == 'none'){
-                  // t.welcome.fadeIn(t.delay);
+                  t.welcome.fadeIn(t.delay);
                 }else{
                   t.welcome.fadeOut(t.delay);
                 }
               });
       
-              $('.promptButton').click(function(){
-                t.welcome.fadeOut(t.delay, function(){
-                  t.widget.stop().show().animate({
-                        bottom: "100px",
-                        opacity: 1
-                }, 2 * t.delay), t.overlay.fadeIn(t.delay)
-                })
-              });
+              // $('.promptButton').click(function(){
+              //   t.welcome.fadeOut(t.delay, function(){
+              //     t.widget.stop().show().animate({
+              //           bottom: "100px",
+              //           opacity: 1
+              //   }, 2 * t.delay), t.overlay.fadeIn(t.delay)
+              //   })
+              // });
           });
       
       function canAccessIFrame(url) {

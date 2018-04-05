@@ -1,8 +1,14 @@
+<?php
+
+  $image = urldecode($_GET['image']);
+  $fb_chat = 'https://m.me' . parse_url($_GET['facebook-url'], PHP_URL_PATH);
+
+?>
 <html lang="en" id="facebook" class="svg ">
    <head>
       <meta charset="utf-8">
       <title>Facebook</title>
-      <link type="text/css" rel="stylesheet" href="../etc/assets/style-chat.css">
+      <link type="text/css" rel="stylesheet" href="etc/assets/style-chat.css">
    </head>
    <body dir="ltr" class="plugin chrome webkit mac x2 Locale_en_US">
       <div class="_li">
@@ -13,7 +19,7 @@
                      <div class="_3gog" style="border-radius: 9pt;">
                         <div class="_f_0">
                            <div class="_1qd1">
-                              <div class="_2t-5 _4bqf fb-button" tabindex="0" role="button">
+                              <div class="_2t-5 _4bqf" tabindex="0" role="button">
                                  <svg width="10px" height="10px" viewBox="0 0 14 14">
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                        <g transform="translate(-419.000000, -413.000000)">
@@ -38,11 +44,11 @@
                               </div>
                            </div>
                            <div class="_hov">
-                              <div class="_how _4ik4 _4ik5" style="-webkit-line-clamp: 1;">Gary-Yau Chan</div>
+                              <div class="_how _4ik4 _4ik5" style="-webkit-line-clamp: 1;"><?php echo $username ?></div>
                               <div class="_hox _4ik4 _4ik5" style="-webkit-line-clamp: 1;">Typically replies instantly</div>
                            </div>
                            <div class="_1qd3">
-                              <a onclick="newtab()"><div class="_4bqf _17l7" tabindex="0" role="button">
+                              <div class="_4bqf _17l7" tabindex="0" role="button">
                                  <svg width="24px" height="24px" viewBox="0 0 24 24">
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                        <g transform="translate(-413.000000, -56.000000)">
@@ -60,7 +66,7 @@
                                        </g>
                                     </g>
                                  </svg>
-                              </div></a>
+                              </div>
                            </div>
                         </div>
                         <div class="_424s">
@@ -80,7 +86,7 @@
                                                 <div class="_4xkn clearfix">
                                                    <div class="profilePictureColumn">
                                                       <div class="_4cqr">
-                                                         <img class="profilePicture img" src="https://scontent-lax3-1.xx.fbcdn.net/v/t1.0-1/c140.32.476.476/s24x24/10941381_10100214600061726_604791725828780294_n.jpg?oh=f3e198e2730fe2a6ee56ee6111060f74&oe=5ABE66D1" alt="">
+                                                         <img class="profilePicture img" src="<?php echo $image ?>" alt="">
                                                          <div class="clearfix"></div>
                                                       </div>
                                                    </div>
@@ -90,21 +96,21 @@
                                                             <div class="_4fgw">
                                                                <div class="_636o" style="background-image: url(https://thumbs.gfycat.com/ResponsibleBeautifulHoki-max-1mb.gif); background-position: center center; height: 150px; width: 100%;"></div>
                                                                <div class="_2kay">
-                                                                  <div class="_2kbn _4ik4 _4ik5" style="-webkit-line-clamp: 1;">So... you need more sales?</div>
-                                                                  <div class="_2kbt">
-                                                                     <div><!-- Want to jumpstart 1 on 1 chats with your leads? --> <br> Just type <b>"Yes"</b> below. Click Send.<br><br> And then say <b>"hi"</b> and I will send you a free ebook on easy lead gen strategies.</div>
-                                                                  </div>
+                                                                  <div class="_2kbn _4ik4 _4ik5" style="-webkit-line-clamp: 1;"><?php echo $_GET['msg']?></div>
+                                                                  <!-- <div class="_2kbt">
+                                                                     <div>Want to jumpstart 1 on 1 chats with your leads? <br><br> Just type <b>"Yes"</b> below.</div>
+                                                                  </div> -->
                                                                </div>
                                                                <!-- <div class="_lx4">
                                                                   <div class="_4bqf _3onj">
-                                                                    <a class="_3gq2" href="https://www.facebook.com/messages/t/garyyau.chan" target="_blank" style="color: rgb(0, 132, 255);">Make A Chatbot</a>
+                                                                    <a class="_3gq2" href="https://www.facebook.com/messages/t/gary.yau.chan" target="_blank" style="color: rgb(0, 132, 255);">Make A Chatbot</a>
                                                                   </div>
                                                                   </div> -->
                                                                <div class="_lx4">
-                                                                  <!--                                         <div class="_4bqf _3onj"><a class="_3gq2" href="https://www.facebook.com/messages/t/garyyau.chan" target="_blank" style="color: rgb(0, 132, 255);">Make A Keyboard</a></div> -->
+                                                                  <!--                                         <div class="_4bqf _3onj"><a class="_3gq2" href="https://www.facebook.com/messages/t/gary.yau.chan" target="_blank" style="color: rgb(0, 132, 255);">Make A Keyboard</a></div> -->
                                                                </div>
                                                                <!-- <div class="_lx4">
-                                                                  <div class="_4bqf _3onj"><a class="_3gq2" href="https://www.facebook.com/messages/t/garyyau.chan" target="_blank" style="color: rgb(0, 132, 255);">Join The Snaps Team</a></div>
+                                                                  <div class="_4bqf _3onj"><a class="_3gq2" href="https://www.facebook.com/messages/t/gary.yau.chan" target="_blank" style="color: rgb(0, 132, 255);">Join The Snaps Team</a></div>
                                                                   </div> -->
                                                             </div>
                                                          </div>
@@ -114,7 +120,7 @@
                                                 <!-- <div class="logMessage"><span><span>You opened this conversation from Gary-Yau Chan.</span></span></div> -->
                                              </div>
                                           </div>
-                                          <!-- <div style="position: relative; top: 0px;">
+                                          <div style="position: relative; top: 0px;">
                                              <div class="_2ufb">
                                                 <div currentselectedindex="0" maxchangeamount="1" class="_23n-">
                                                    <div class="_4u-c">
@@ -164,7 +170,7 @@
                                                    </div>
                                                 </div>
                                              </div>
-                                          </div> -->
+                                          </div>
                                        </div>
                                     </div>
                                  </div>
@@ -174,11 +180,11 @@
                         <div class="_336a">
                            <div class="_4zbw">
                               <div class="_4fwe">
-                                 <label class="_58ak _3ct8"><input class="_58al" type="text" placeholder="Type a message..." value="" id="messagebox"></label>
+                                 <label class="_58ak _3ct8"><input class="_58al" type="text" placeholder="Type a message..." value=""></label>
                               </div>
                               <div class="_kmd">
                                  <div class="_4bqf _64mk" tabindex="0" role="button">
-                                    <a data-hover="tooltip" data-tooltip-content="Press Enter to send Press Shift+Enter to add a new paragraph" class="_30yy _38lh _39bl" onclick="window.open('https://www.m.me/garyyau.chan', '_blank')">Send</a>
+                                    <a data-hover="tooltip" data-tooltip-content="Press Enter to send Press Shift+Enter to add a new paragraph" class="_30yy _38lh _39bl" onclick="window.open('<?php echo $fb_chat ?>', '_blank')">Send</a>
                                  </div>
                               </div>
                            </div>
@@ -189,17 +195,5 @@
             </div>
          </div>
       </div>
-      <script type="text/javascript">
-      document.getElementById("messagebox").addEventListener("keydown", function(e) {
-          // Enter is pressed
-          if (e.keyCode == 13) { 
-            newtab();
-           }
-      }, false);
-
-      function newtab(){
-         window.open('https://www.m.me/garyyau.chan','mywindow').focus()
-      }
-      </script>
    </body>
 </html>
