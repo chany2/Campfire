@@ -1,39 +1,44 @@
 <?php
-      
-      $siteUrl = $_GET['url'];
-      $requestUrl = 'https://opengraph.io/api/1.1/site/' . urlencode($siteUrl);
-      
-      $requestUrl = $requestUrl . '?app_id=5ab53e43c8869a6a06cf204e';
-       
-      $siteInformationJSON = file_get_contents($requestUrl);
-      $siteInformation = json_decode($siteInformationJSON, true);
-
-      $title = issetor($siteInformation['hybridGraph']['title'], 'Campfire Chat');
-      $description = issetor($siteInformation['hybridGraph']['description'], 'Create Real Sales Opportunities on Any Link You Share.');
-      $image = issetor($siteInformation['hybridGraph']['image'], '');    
-      $site_name = $siteInformation['hybridGraph']['site_name'];
-      $video = $siteInformation['hybridGraph']['video'];  
-      $locale = $siteInformation['hybridGraph']['locale'];      
-
-      function issetor(&$var, $default) {
-          return isset($var) ? $var : $default;
-      }               
-?>
+   $siteUrl = urldecode($_GET['url']); 
+   $requestUrl = 'https://opengraph.io/api/1.1/site/' . urlencode($siteUrl);
+   $requestUrl = $requestUrl . '?app_id=5ab53e43c8869a6a06cf204e';
+    
+   $siteInformationJSON = file_get_contents($requestUrl);
+   $siteInformation = json_decode($siteInformationJSON, true);
+   
+   $title = issetor($siteInformation['hybridGraph']['title'], 'Campfire Chat');
+   $description = issetor($siteInformation['hybridGraph']['description'], 'Create Real Sales Opportunities on Any Link You Share.');
+   $image = issetor($siteInformation['hybridGraph']['image'], '');    
+   $site_name = $siteInformation['hybridGraph']['site_name'];
+   $video = $siteInformation['hybridGraph']['video'];  
+   $locale = $siteInformation['hybridGraph']['locale'];      
+   
+   $message1 = $_GET["message1"];
+   $message2 = $_GET["message2"];
+   
+   $facebookUrl = 'https://opengraph.io/api/1.1/site/' . urldecode($_GET['facebook-url']) . '?app_id=5aae8abbc8869a6a06cf159a';;
+   $siteInformationJSON = file_get_contents($facebookUrl);
+   $fbInformation = json_decode($siteInformationJSON, true);      
+   $username = $fbInformation['hybridGraph']['title'];
+   $fbImage = $fbInformation['hybridGraph']['image'];
+   
+   function issetor(&$var, $default) {
+       return isset($var) ? $var : $default;
+   }               
+   ?>
 <!DOCTYPE>
 <html>
    <head>
-      
-
       <!-- Hotjar Tracking Code for http://mycampfirechat.com/g/result.php -->
       <script>
-          (function(h,o,t,j,a,r){
-              h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-              h._hjSettings={hjid:824430,hjsv:6};
-              a=o.getElementsByTagName('head')[0];
-              r=o.createElement('script');r.async=1;
-              r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-              a.appendChild(r);
-          })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+         (function(h,o,t,j,a,r){
+             h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+             h._hjSettings={hjid:824430,hjsv:6};
+             a=o.getElementsByTagName('head')[0];
+             r=o.createElement('script');r.async=1;
+             r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+             a.appendChild(r);
+         })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
       </script>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
@@ -41,13 +46,11 @@
       <link rel="stylesheet" href="../etc/assets/style.css">
       <link rel="stylesheet" href="../etc/assets/facebook.css">
       <link rel="stylesheet" type="text/css" href="../etc/assets/chat.css">
-
       <meta property="og:title" content="<?php echo $title; ?>">
       <meta property="og:url" content="<?php echo $url; ?>">
       <meta property="og:description" content="<?php echo $description; ?>">
       <meta property="og:image" content="<?php echo $image; ?>">
       <meta property="og:url" content="<?php echo $url; ?>">
-
       <!-- COMMON TAGS -->
       <title><?php echo $title; ?></title>
       <!-- Search Engine -->
@@ -74,9 +77,8 @@
       <meta name="og:video" content="<?php echo $video; ?>">
       <meta name="og:locale" content="<?php echo $locale; ?>">
       <!-- <meta name="fb:admins" content="">
-      <meta name="fb:app_id" content=""> -->
+         <meta name="fb:app_id" content=""> -->
       <meta name="og:type" content="website">
-
       <style>
          /*body{
          overflow-y: scroll;
@@ -101,11 +103,7 @@
          -webkit-overflow-scrolling: touch;
          overflow-y: scroll;
          }
-         .fb-livechat-welcome{
-          bottom: 290pt;
-         }
       </style>
-
       <script async>(function(s,u,m,o,j,v){j=u.createElement(m);v=u.getElementsByTagName(m)[0];j.async=1;j.src=o;j.dataset.sumoSiteId='3f01d7a57fb4246b1c668e5dcff27ab1576b2a3cfca252ddb6ac6455e0ff318e';v.parentNode.insertBefore(j,v)})(window,document,'script','//load.sumo.com/');</script>
    </head>
    <body>
@@ -124,21 +122,21 @@
                            <div class="_j68">
                               <div class="promptHeaderContainer">
                                  <div class="promptTextContainer">
-                                    <div class="promptHeader"><img src="https://thumbs.gfycat.com/ResponsibleBeautifulHoki-max-1mb.gif" style="margin:10px">Hey its Gary here! Want to get more leads faster without spending more?<br><br>Click Chat Now, I'll send you my recorded webinar.
-                                    </div>
+                                    <div class="promptHeader"><img src="https://thumbs.gfycat.com/ResponsibleBeautifulHoki-max-1mb.gif" style="margin:10px"><p><?php echo $message1; ?></p>
+                                       </div>
                                     <div class="promptSubheader">
                                        <div class="profilePictureContainer">
                                           <div class="_4cqr">
-                                             <img class="profilePicture img" src="https://scontent-lax3-1.xx.fbcdn.net/v/t1.0-1/c140.32.476.476/s24x24/10941381_10100214600061726_604791725828780294_n.jpg?oh=f3e198e2730fe2a6ee56ee6111060f74&oe=5ABE66D1" alt="">
+                                             <img class="profilePicture img" id="profile-picture" alt="" src="<?php echo $fbImage ?>"/>
                                              <div class="clearfix"></div>
                                           </div>
                                        </div>
-                                       <div class="username">Gary-Yau Chan</div>
+                                       <div class="username" id="username"><?php echo $username; ?></div>
                                        <!-- <a class="notYouLink" href="#">Not you?</a> -->
                                     </div>
                                  </div>
                                  <div class="_4cqr">
-                                    <img class="profilePicture img" alt="">
+                                    <img class="profilePicture img" alt="" src="<?php echo $fbImage ?>"/>
                                     <div class="clearfix"></div>
                                  </div>
                                  <div class="closeButtonContainer">
@@ -167,8 +165,10 @@
                                     </div>
                                  </div>
                               </div>
-                              <a onclick="window.open('https://www.m.me/garyyau.chan', '_blank')"><div class="promptButtonContainer">
-                                 <div class="_4bqf promptButton" tabindex="0" role="button" style="color: rgb(0, 132, 255);">Chat Now</div></a>
+                              <a onclick="window.open('https://www.m.me/garyyau.chan', '_blank')">
+                                 <div class="promptButtonContainer">
+                                    <div class="_4bqf promptButton" tabindex="0" role="button" style="color: rgb(0, 132, 255);">Chat Now</div>
+                              </a>
                               </div>
                            </div>
                         </div>
@@ -181,14 +181,9 @@
          <div class="fb-widget" style="display: none; bottom: 0px; opacity: 0;">
             <div class="fb-customerchat fb_invisible_flow fb_iframe_widget" page_id="450517685117626" ref="5a0f1e4c5fbb4043950463df" minimized="false" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=712856635533512&amp;container_width=0&amp;locale=en_US&amp;minimized=false&amp;page_id=450517685117626&amp;ref=5a0f1e4c5fbb4043950463df&amp;sdk=joey">
                <span style="vertical-align: bottom; width: 1000px; height: 0px;">
-                  <div class="scroll-wrapper">
-                     <iframe name="f177f0ad30ab644" width="1000px" height="100px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:customerchat Facebook Social Plugin" src="customerchat.html" style="border: none; visibility: visible; width: 270pt; height: 360pt; border-radius: 9pt; bottom: 72pt; box-shadow: rgba(0, 0, 0, 0.15) 0px 3pt 12pt; display: inline; padding: 0px; position: fixed; left: 18pt; top: auto; z-index: 2147483647;" class="" data-testid="dialog_iframe"></iframe>
-                  </div>
+               <iframe name="f177f0ad30ab644" width="1000px" height="100px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:customerchat Facebook Social Plugin" src="customerchat.php?msg=<?php echo $message2  ?>&facebook-url=<?php echo $facebookUrl ?>&image=<?php echo urlencode($fbImage) ?>" style="border: none; visibility: visible; width: 270pt; height: 360pt; border-radius: 9pt; bottom: 72pt; box-shadow: rgba(0, 0, 0, 0.15) 0px 3pt 12pt; display: inline; padding: 0px; position: fixed; left: 18pt; top: auto; z-index: 2147483647;" class="" data-testid="dialog_iframe"></iframe>
                </span>
             </div>
-            <!-- <div class="ctrlq fb-close"></div>
-               <div class="fb-page fb_iframe_widget" data-href="https://www.facebook.com/digital.inspiration/" data-tabs="messages" data-width="360" data-height="400" data-small-header="true" data-hide-cover="true" data-show-facepile="false" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=&amp;container_width=0&amp;height=400&amp;hide_cover=true&amp;href=https%3A%2F%2Fwww.facebook.com%2Fdigital.inspiration%2F&amp;locale=en_US&amp;sdk=joey&amp;show_facepile=false&amp;small_header=true&amp;tabs=messages&amp;width=360"><span style="vertical-align: top; width: 0px; height: 0px; overflow: hidden;"><iframe name="f370d6b1e807d18" width="360px" height="400px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:page Facebook Social Plugin" src="https://www.facebook.com/v2.9/plugins/page.php?app_id=&amp;channel=http%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter%2Fr%2FlY4eZXm_YWu.js%3Fversion%3D42%23cb%3Df2c8a18651c7154%26domain%3D%26origin%3Dfile%253A%252F%252F%252Ff361d462ab4d3c%26relation%3Dparent.parent&amp;container_width=0&amp;height=400&amp;hide_cover=true&amp;href=https%3A%2F%2Fwww.facebook.com%2Fdigital.inspiration%2F&amp;locale=en_US&amp;sdk=joey&amp;show_facepile=false&amp;small_header=true&amp;tabs=messages&amp;width=360" style="border: none; visibility: visible; width: 0px; height: 0px;"></iframe></span></div>
-               <div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_http" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" id="fb_xdm_frame_http" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="http://staticxx.facebook.com/connect/xd_arbiter/r/lY4eZXm_YWu.js?version=42#channel=f361d462ab4d3c&amp;origin=file%3A%2F%2F" style="border: none;"></iframe><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="https://staticxx.facebook.com/connect/xd_arbiter/r/lY4eZXm_YWu.js?version=42#channel=f361d462ab4d3c&amp;origin=file%3A%2F%2F" style="border: none;"></iframe></div></div></div> -->
          </div>
          <a title="Send us a message on Facebook" class="ctrlq fb-button" style="display: block;"></a>
          <p id="console" class="hidden none">Loading...</p>

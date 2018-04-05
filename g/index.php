@@ -23,7 +23,7 @@
       color: #6E6E6E
       }
       .container {
-      height: 100%!important;
+      height: 50%!important;
       max-width: 100%!important;
       display: flex;
       position: fixed;
@@ -45,31 +45,39 @@
          </div>
       </div>
       <div class="fixed-bottom">
-      <div class="bottom-navbar">
-        <div class="row">
-          <div class="col-md-11">
-            <div class="form-group">
-              <input id="url" class="form-control" placeholder="Enter URL"/>
+         <div class="bottom-navbar">
+            <div class="row">
+               <div class="col-md-12">
+                  <form action="result.php">
+                     <div class="form-group">
+                        <input id="url" name="url" class="form-control" placeholder="Enter URL"/>
+                     </div>
+                     <div class="form-group">
+                        <input id="facebook-url" name="facebook-url" class="form-control" placeholder="Your facebook profile URL"/>
+                     </div>
+                     <div class="form-group">
+                        <textarea name="message1" class="form-control" placeholder="Type Message #1..."></textarea>
+                     </div>
+                     <div class="form-group">
+                        <textarea name="message2" class="form-control" placeholder="Type CTA Message #2..."></textarea>
+                     </div>
+                     <div class="form-group">
+                        <input type="submit" class="btn btn-success" value="OK"/>
+                     </div>
+                  </form>
+               </div>
             </div>
-            <div class="form-group">
-              <input id="msg" class="form-control" placeholder="Type CTA Message..."/>
-            </div>
-          </div>
-          <div class="col-md-1">
-            <input id="submit" type="button" class="btn btn-success" value="OK"/>
-          </div>
-        </div>
-      </div>
+         </div>
       </div>
    </body>
    <script type="text/javascript">
-    $(document).ready(function(){
-      $("#submit").click(function(){
-        var url = $("#url").val();
-        if(url != ""){
-          $(location).attr('href', '/g/result.php?url=' + url);
-        }
+      $(document).ready(function(){
+        $("#submit").click(function(){
+          var url = $("#url").val();
+          if(url != ""){
+            $(location).attr('href', 'result.php?url=' + url);
+          }
+        });
       });
-    });
-  </script>
+   </script>
 </html>
