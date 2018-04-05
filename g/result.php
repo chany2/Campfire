@@ -3,7 +3,7 @@
       $siteUrl = $_GET['url'];
       $requestUrl = 'https://opengraph.io/api/1.1/site/' . urlencode($siteUrl);
       
-      $requestUrl = $requestUrl . '?app_id=5a92f46487efbd253e7972d3';
+      $requestUrl = $requestUrl . '?app_id=5ab53e43c8869a6a06cf204e';
        
       $siteInformationJSON = file_get_contents($requestUrl);
       $siteInformation = json_decode($siteInformationJSON, true);
@@ -19,9 +19,22 @@
           return isset($var) ? $var : $default;
       }               
 ?>
-
+<!DOCTYPE>
 <html>
-   <head>   
+   <head>
+      
+
+      <!-- Hotjar Tracking Code for http://mycampfirechat.com/g/result.php -->
+      <script>
+          (function(h,o,t,j,a,r){
+              h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+              h._hjSettings={hjid:824430,hjsv:6};
+              a=o.getElementsByTagName('head')[0];
+              r=o.createElement('script');r.async=1;
+              r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+              a.appendChild(r);
+          })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+      </script>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
       <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -92,6 +105,8 @@
           bottom: 290pt;
          }
       </style>
+
+      <script async>(function(s,u,m,o,j,v){j=u.createElement(m);v=u.getElementsByTagName(m)[0];j.async=1;j.src=o;j.dataset.sumoSiteId='3f01d7a57fb4246b1c668e5dcff27ab1576b2a3cfca252ddb6ac6455e0ff318e';v.parentNode.insertBefore(j,v)})(window,document,'script','//load.sumo.com/');</script>
    </head>
    <body>
       <div class="scroll-wrapper">
@@ -208,7 +223,7 @@
    <script>
       $(document).ready(function() {
               var t = {
-                  delay: 125,
+                  delay: 650,
                   overlay: $(".fb-overlay"),
                   widget: $(".fb-widget"),
                   button: $(".fb-button"),
