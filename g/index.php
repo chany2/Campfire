@@ -50,16 +50,19 @@
                <div class="col-md-12">
                   <form action="result.php">
                      <div class="form-group">
-                        <input id="url" name="url" class="form-control" placeholder="Enter URL"/>
+                        <input id="url" name="url" class="form-control" type="text" placeholder="Enter URL"/>
                      </div>
                      <div class="form-group">
-                        <input id="facebook-url" name="facebook-url" class="form-control" placeholder="Your facebook profile URL"/>
+                        <textarea id="message1" name="message1" class="form-control" placeholder="Type Message #1..."></textarea>
+                     </div>
+                     <!-- <div class="form-group">
+                        <textarea id="message2" name="message2" class="form-control" placeholder="Type Message #2..."></textarea>
+                     </div> -->
+                     <div class="form-group">
+                        <input id="facebook-url" name="facebook-url" class="form-control" type="text" placeholder="Your facebook profile URL"/>
                      </div>
                      <div class="form-group">
-                        <textarea name="message1" class="form-control" placeholder="Type Message #1..."></textarea>
-                     </div>
-                     <div class="form-group">
-                        <textarea name="message2" class="form-control" placeholder="Type CTA Message #2..."></textarea>
+                        <input id="cta" name="cta" class="form-control" type="text" placeholder="Type CTA"/>
                      </div>
                      <div class="form-group">
                         <input type="submit" class="btn btn-success" value="OK"/>
@@ -73,11 +76,50 @@
    <script type="text/javascript">
       $(document).ready(function(){
         $("#submit").click(function(){
+
+            // SAVE LOCALSTORAGE
+            $('input[type="text"]').each(function(){    
+              var id = $(this).attr('id');
+              var value = $(this).val();
+             localStorage.setItem(id, value);
+            }); 
+            $('textarea').each(function(){    
+              var id = $(this).attr('id');
+              var value = $(this).val();
+             localStorage.setItem(id, value);
+            }); 
+
           var url = $("#url").val();
           if(url != ""){
             $(location).attr('href', 'result.php?url=' + url);
           }
         });
+
+        // LOAD LOCALSTORAGE
+        $('input[type="text"]').each(function(){    
+            var id = $(this).attr('id');
+            var value = localStorage.getItem(id);
+            $(this).val(value);  
+         }); 
+        $('textarea').each(function(){    
+            var id = $(this).attr('id');
+            var value = localStorage.getItem(id);
+            $(this).val(value);  
+         }); 
+
+        // CONVERT USER PROFILE TO CTA
+        $('#facebook-url').keyup(function() {
+            var profile_url = $('#facebook-url').val();
+           if (profile_url.indexOf("facebook.com") >= 0){
+               var cta_url = 'https://www.m.me'+ /.com(.+)/.exec(profile_url)[1];
+               $('#cta').val(cta_url);
+           }else if(profile_url.indexOf("linkedin.com") >= 0){
+               var regex = /(?:\/.*\/)(.*)/;
+               var user_id = regex.exec(profile_url)[1];
+               var cta_url = 'https://www.linkedin.com/messaging/compose/?after=mynetwork.index&recipient='+ user_id;
+               $('#cta').val(cta_url);
+           }
+         })
       });
    </script>
 </html>

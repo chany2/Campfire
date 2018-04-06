@@ -8,19 +8,20 @@
    
    $title = issetor($siteInformation['hybridGraph']['title'], 'Campfire Chat');
    $description = issetor($siteInformation['hybridGraph']['description'], 'Create Real Sales Opportunities on Any Link You Share.');
-   $image = issetor($siteInformation['hybridGraph']['image'], '');    
+   $image = $siteInformation['hybridGraph']['image'];
    $site_name = $siteInformation['hybridGraph']['site_name'];
    $video = $siteInformation['hybridGraph']['video'];  
    $locale = $siteInformation['hybridGraph']['locale'];      
    
-   $message1 = $_GET["message1"];
+   $message1 = issetor($_GET["message1"], "Hey its Gary here! Want to get more leads faster without spending more?<br><br>Click Chat Now, I'll send you my recorded webinar.");
    $message2 = $_GET["message2"];
+   $cta = issetor($_GET["cta"], "https://www.m.me/garyyau.chan");
    
    $facebookUrl = 'https://opengraph.io/api/1.1/site/' . urldecode($_GET['facebook-url']) . '?app_id=5aae8abbc8869a6a06cf159a';;
    $siteInformationJSON = file_get_contents($facebookUrl);
    $fbInformation = json_decode($siteInformationJSON, true);      
-   $username = $fbInformation['hybridGraph']['title'];
-   $fbImage = $fbInformation['hybridGraph']['image'];
+   $username = issetor($fbInformation['hybridGraph']['title'], 'Gary-Yau Chan');
+   $fbImage = issetor($fbInformation['hybridGraph']['image'], 'https://scontent-iad3-1.xx.fbcdn.net/v/t1.0-1/cp0/e15/q65/p200x200/29186690_10100825954702126_5619734372014882816_n.jpg?_nc_cat=0&oh=59df6e91f96518e409740318fc5122cd&oe=5B645D60');
    
    function issetor(&$var, $default) {
        return isset($var) ? $var : $default;
@@ -165,7 +166,7 @@
                                     </div>
                                  </div>
                               </div>
-                              <a onclick="window.open('https://www.m.me/garyyau.chan', '_blank')">
+                              <a onclick="window.open('<?php echo $cta; ?>', '_blank')">
                                  <div class="promptButtonContainer">
                                     <div class="_4bqf promptButton" tabindex="0" role="button" style="color: rgb(0, 132, 255);">Chat Now</div>
                               </a>
