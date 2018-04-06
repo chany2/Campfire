@@ -9,7 +9,6 @@
    </head>
    <style type="text/css">
       body{
-      text-align: center;
       font-family: 'Libre Baskerville', serif;
       font-size: 3vmin;
       color: #3D3D3D
@@ -23,6 +22,7 @@
       color: #6E6E6E
       }
       .container {
+      text-align: center;
       height: 50%!important;
       max-width: 100%!important;
       display: flex;
@@ -50,22 +50,28 @@
                <div class="col-md-12">
                   <form action="result.php">
                      <div class="form-group">
-                        <input id="url" name="url" class="form-control" type="text" placeholder="Enter URL"/>
+                        <small>Enter a URL</small>
+                        <input id="url" name="url" class="form-control" type="text" placeholder="Enter URL" required/>
                      </div>
                      <div class="form-group">
-                        <textarea id="message1" name="message1" class="form-control" placeholder="Type Message #1..."></textarea>
+                        <small>Message</small>
+                        <textarea id="message1" name="message1" class="form-control" placeholder="Type Message #1..." required></textarea>
                      </div>
                      <!-- <div class="form-group">
-                        <textarea id="message2" name="message2" class="form-control" placeholder="Type Message #2..."></textarea>
+                        <small>Message 2</small>
+                        <textarea id="message2" name="message2" class="form-control" placeholder="Type Message #2..." required></textarea>
                      </div> -->
                      <div class="form-group">
-                        <input id="facebook-url" name="facebook-url" class="form-control" type="text" placeholder="Your facebook profile URL"/>
+                        <small>Facebook Profile URL</small>
+                        <input id="facebook-url" name="facebook-url" class="form-control" type="text" placeholder="Your facebook profile URL" required/>
                      </div>
                      <div class="form-group">
-                        <input id="cta" name="cta" class="form-control" type="text" placeholder="Type CTA"/>
+                        <small>CTA</small>
+                        <input id="cta" name="cta" class="form-control" type="text" placeholder="Type CTA" required/>
+                        <small>https://www.linkedin.com/messaging/compose/?after=mynetwork.index&recipient={{linkedin-public-profile-id}}</small>
                      </div>
                      <div class="form-group">
-                        <input type="submit" class="btn btn-success" value="OK"/>
+                        <input id="submit" type="submit" class="btn btn-success" value="OK"/>
                      </div>
                   </form>
                </div>
@@ -75,25 +81,21 @@
    </body>
    <script type="text/javascript">
       $(document).ready(function(){
-        $("#submit").click(function(){
-
-            // SAVE LOCALSTORAGE
-            $('input[type="text"]').each(function(){    
-              var id = $(this).attr('id');
-              var value = $(this).val();
-             localStorage.setItem(id, value);
-            }); 
-            $('textarea').each(function(){    
-              var id = $(this).attr('id');
-              var value = $(this).val();
-             localStorage.setItem(id, value);
-            }); 
-
-          var url = $("#url").val();
-          if(url != ""){
-            $(location).attr('href', 'result.php?url=' + url);
-          }
-        });
+        $("#submit").on({
+              mouseover:function(){
+                  // SAVE LOCALSTORAGE
+                  $('input[type="text"]').each(function(){    
+                    var id = $(this).attr('id');
+                    var value = $(this).val();
+                   localStorage.setItem(id, value);
+                  }); 
+                  $('textarea').each(function(){    
+                    var id = $(this).attr('id');
+                    var value = $(this).val();
+                   localStorage.setItem(id, value);
+                  }); 
+              }
+          });
 
         // LOAD LOCALSTORAGE
         $('input[type="text"]').each(function(){    
