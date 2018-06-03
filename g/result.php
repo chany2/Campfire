@@ -1,5 +1,6 @@
 <?php
-   $siteUrl = urldecode($_GET['url']); 
+   header("X-XSS-Protection: 0");
+   $siteUrl = urldecode($_GET['url']);  
    $requestUrl = 'https://opengraph.io/api/1.1/site/' . urlencode($siteUrl);
    $requestUrl = $requestUrl . '?app_id=5ab53e43c8869a6a06cf204e';
     
@@ -8,7 +9,7 @@
    
    $title = issetor($siteInformation['hybridGraph']['title'], 'Campfire Chat');
    $description = issetor($siteInformation['hybridGraph']['description'], 'Create Real Sales Opportunities on Any Link You Share.');
-   $image = $siteInformation['hybridGraph']['image'];
+   $image = issetor($siteInformation['hybridGraph']['image'], ''); 
    $site_name = $siteInformation['hybridGraph']['site_name'];
    $video = $siteInformation['hybridGraph']['video'];  
    $locale = $siteInformation['hybridGraph']['locale'];      
@@ -108,11 +109,36 @@
       <script async>(function(s,u,m,o,j,v){j=u.createElement(m);v=u.getElementsByTagName(m)[0];j.async=1;j.src=o;j.dataset.sumoSiteId='3f01d7a57fb4246b1c668e5dcff27ab1576b2a3cfca252ddb6ac6455e0ff318e';v.parentNode.insertBefore(j,v)})(window,document,'script','//load.sumo.com/');</script>
    </head>
    <body>
-      <div class="scroll-wrapper">
-         <div id="iframe" style="border-bottom: 3px solid;">
-            <!-- <iframe width="100%" height="90%" scrolling="no" frameborder="0" src=""></iframe> -->
-         </div>
-      </div>
+        <?php                   
+          if($_GET['iframe-type'] == 'iframely'){ 
+            echo '<div class="iframely-content" style="width:75%;margin:0 auto">';
+
+            echo str_replace("<.script","<script", $_GET['iframe-content']);
+
+            echo '</div>';
+
+          } else if ($_GET['iframe-type'] == 'amp'){ ?>
+            <div class="scroll-wrapper">              
+              <div class="scroll-wrapper">
+                <iframe width="100%" height="100%" src="<?php echo $_GET['iframe-content']; ?>"/>
+              </div>
+            </div>
+          <? } else if($_GET['iframe-type'] == 'amp'){ ?>       
+            <div class="scroll-wrapper">
+              <div id="iframe" style="border-bottom: 3px solid;">
+                <iframe width="100%" height="90%" scrolling="no" frameborder="0" src=""></iframe>
+              </div>
+            </div>
+            <?php
+          } else { ?>
+            <div class="scroll-wrapper">
+              <div class="scroll-wrapper">
+                 <div id="iframe" style="border-bottom: 3px solid;">
+                    <iframe width="100%" height="90%" scrolling="no" frameborder="0" src=""></iframe>
+                 </div>
+              </div>
+            </div>
+          <?php } ?>   
       <div class="fb-livechat">
          <div class="fb-livechat-welcome" id="chat-welcome" width="1000px" height="1000px" >
             <div class="_li">
@@ -123,8 +149,10 @@
                            <div class="_j68">
                               <div class="promptHeaderContainer">
                                  <div class="promptTextContainer">
-                                    <div class="promptHeader"><img src="https://thumbs.gfycat.com/ResponsibleBeautifulHoki-max-1mb.gif" style="margin:10px"><p><?php echo $message1; ?></p>
-                                       </div>
+                                    <div class="promptHeader">
+<!--                                       <img src="https://thumbs.gfycat.com/ResponsibleBeautifulHoki-max-1mb.gif" style="margin:10px">
+ -->                                      <p><?php echo $message1; ?></p>
+                                    </div>
                                     <div class="promptSubheader">
                                        <div class="profilePictureContainer">
                                           <div class="_4cqr">
@@ -193,9 +221,14 @@
    </body>
    <script type="text/javascript">
       $(document).ready(function(){
-        var url = $.urlParam('url');
-        $("#iframe iframe").attr({'src':url});
-      
+        var iframe_type = '';
+        <?php if($_GET['iframe-type'] != null){ ?>
+          iframe_type = "<?php echo $_GET['iframe-type']; ?>";
+        <?php } ?> 
+        var url = "<?php echo $_GET['url']; ?>";  
+        if(iframe_type == ''){          
+          $("#iframe iframe").attr({'src': url});
+        }    
         // TESTING IF IFRAME, ELSE REDIRECT
         if(canAccessIFrame(decodeURIComponent(url))){
       
@@ -281,7 +314,7 @@
               if(url.indexOf("ampproject") || url.indexOf("youtube.com/embed") !== -1 ){
       
               }else{
-                window.location.replace(url);
+                //window.location.replace(url);
                 consoleDiv.innerHTML = '✘ Content window failed to load: ' + iframe.src;
                 consoleDiv.style.cssText = 'color: red;'
               }
